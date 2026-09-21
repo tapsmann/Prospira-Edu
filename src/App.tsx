@@ -16,7 +16,7 @@ import { WhatWeExistToChange } from './pages/blog/WhatWeExistToChange'
 import { MeetOurMentors } from './pages/blog/MeetOurMentors'
 import { PartnershipModel } from './pages/blog/PartnershipModel'
 import { PurposefulEducation } from './pages/blog/PurposefulEducation'
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from '@vercel/analytics/react'
 function ScrollToTop() {
   const { pathname } = useLocation()
   useEffect(() => { window.scrollTo(0, 0) }, [pathname])
@@ -67,6 +67,7 @@ export default function App() {
     <BrowserRouter>
       <AuthProvider>
         <AppLayout />
+        <Analytics />
       </AuthProvider>
     </BrowserRouter>
   )
