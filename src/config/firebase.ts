@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import { getAuth, GoogleAuthProvider } from 'firebase/auth'
-import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check'
+import { initializeAppCheck, ReCaptchaEnterpriseProvider } from 'firebase/app-check'
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -15,7 +15,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 
 // App Check must start before Firebase Auth so its token is attached to every
-// email/password and Google authentication request.
+// email/password and Google authentication request. Enterprise key:
+// Cloud Console → reCAPTCHA Enterprise (Website key). Firebase performs the
+// assessment server-side — no backend code needed.
 const recaptchaSiteKey = import.meta.env.VITE_FIREBASE_RECAPTCHA_SITE_KEY as string | undefined
 
 if (import.meta.env.DEV) {
@@ -24,7 +26,7 @@ if (import.meta.env.DEV) {
 
 if (recaptchaSiteKey) {
   initializeAppCheck(app, {
-    provider: new ReCaptchaV3Provider(recaptchaSiteKey),
+    provider: new ReCaptchaEnterpriseProvider(recaptchaSiteKey),
     isTokenAutoRefreshEnabled: true,
   })
 } else {

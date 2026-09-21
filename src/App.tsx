@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import { B, C } from './constants/theme'
 import { Navbar, Footer, FloatingChat } from './components/layout'
 import { HomePage, ServicesPage, PortalPage, ParentsPage, PartnersPage, BlogPage, SignUpPage, SignInPage } from './pages'
@@ -67,6 +68,7 @@ export default function App() {
     <BrowserRouter>
       <AuthProvider>
         <AppLayout />
+        <Analytics />
       </AuthProvider>
     </BrowserRouter>
   )

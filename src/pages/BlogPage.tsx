@@ -3,8 +3,16 @@ import { Link } from 'react-router-dom'
 import { H, B, C } from '@/constants/theme'
 import { BLOG_POSTS } from '@/data'
 import { Badge, SectionLabel, PageContainer } from '@/components/common'
+import { useAuth } from '@/contexts/AuthContext'
+
+const memberArticles = [
+  { title: 'How to build a university shortlist', excerpt: 'A structured way to compare course fit, entry requirements, costs, and intakes before you apply.' },
+  { title: 'Student visa document organiser', excerpt: 'The categories to prepare early so you can review country-specific requirements with confidence.' },
+  { title: 'Accommodation viewing checklist', excerpt: 'Questions to ask about costs, contracts, safety, travel, and move-in before choosing a home.' },
+]
 
 export function BlogPage() {
+  const { user } = useAuth()
   const [activeTag, setActiveTag] = useState('All')
   const tags = ['All', 'Career Change', 'Trades', 'Tech', 'University', 'Scholarships']
 
@@ -49,6 +57,10 @@ export function BlogPage() {
       {/* Content */}
       <section className="w-full site-section" style={{ backgroundColor: C.cream }}>
         <PageContainer>
+          <div className="rounded-2xl p-6 md:p-8 mb-8" style={{ backgroundColor: C.navyMid, border: '1px solid rgba(255,255,255,.1)' }}>
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-6"><div><SectionLabel>Member-only guides</SectionLabel><h2 style={{ fontFamily: H, color: 'white', fontSize: 'clamp(24px, 4vw, 34px)', fontWeight: 700 }}>Resources for your study abroad journey.</h2></div>{!user && <Link to="/sign-up" className="px-5 py-3 rounded-xl text-sm font-semibold text-white no-underline" style={{ backgroundColor: C.emerald, fontFamily: H }}>Create an account to unlock</Link>}</div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">{memberArticles.map(article => <div key={article.title} className="rounded-xl p-5" style={{ backgroundColor: user ? 'rgba(255,255,255,.08)' : 'rgba(255,255,255,.04)', border: '1px solid rgba(255,255,255,.1)' }}><span className="text-xs font-semibold uppercase tracking-wider" style={{ color: C.emeraldL, fontFamily: B }}>{user ? 'Unlocked' : 'Members only'}</span><h3 style={{ fontFamily: H, color: 'white', fontWeight: 700, fontSize: '18px', margin: '10px 0 8px' }}>{article.title}</h3><p style={{ fontFamily: B, color: 'rgba(255,255,255,.62)', fontSize: '14px', lineHeight: 1.6 }}>{user ? article.excerpt : 'Sign in to read this practical study-abroad guide.'}</p>{user && <Link to="/portal" className="inline-block mt-4 text-sm font-semibold" style={{ color: C.emeraldL, fontFamily: B }}>Open my study plan →</Link>}</div>)}</div>
+          </div>
           {featuredPost && (
             <div
               className="rounded-2xl overflow-hidden mb-8 grid grid-cols-1 lg:grid-cols-2 transition-all hover:shadow-xl"

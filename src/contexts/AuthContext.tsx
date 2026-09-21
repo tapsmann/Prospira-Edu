@@ -4,8 +4,6 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signInWithPopup,
-  signInWithRedirect,
-  getRedirectResult,
   signOut as firebaseSignOut,
   updateProfile,
   User as FirebaseUser,
@@ -25,7 +23,6 @@ interface AuthContextType {
   signUp: (email: string, password: string, displayName: string) => Promise<void>
   signIn: (email: string, password: string) => Promise<void>
   signInWithGoogle: () => Promise<void>
-  signInWithGoogleRedirect: () => Promise<void>
   signOut: () => Promise<void>
 }
 
@@ -45,10 +42,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Completes a redirect-based sign-in when returning from the provider.
-    getRedirectResult(auth).catch((err) => {
-      console.error('Google redirect sign-in failed:', err)
-    })
     const unsubscribe = onAuthStateChanged(auth, (fbUser) => {
       if (fbUser) {
         setUser(firebaseUserToUser(fbUser))
@@ -74,17 +67,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     await signInWithPopup(auth, googleProvider)
   }
 
-  const signInWithGoogleRedirect = async () => {
-    await signInWithRedirect(auth, googleProvider)
-  }
-
   const signOut = async () => {
     await firebaseSignOut(auth)
     setUser(null)
   }
 
   return (
-    <AuthContext.Provider value={{ user, loading, signUp, signIn, signInWithGoogle, signInWithGoogleRedirect, signOut }}>
+    <AuthContext.Provider value={{ user, loading, signUp, signIn, signInWithGoogle, signOut }}>
       {children}
     </AuthContext.Provider>
   )
