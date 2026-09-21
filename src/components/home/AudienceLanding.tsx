@@ -12,8 +12,8 @@ const audiences: { key: Audience; eyebrow: string; title: string; description: s
 
 export function AudienceLanding({ onChoose }: AudienceLandingProps) {
   return <section className="min-h-screen relative overflow-hidden" style={{ background: `radial-gradient(circle at 82% 22%, ${C.blue} 0%, ${C.navy} 33%, ${C.navyDark} 100%)` }}>
-    <div className="absolute -right-28 top-20 w-[560px] h-[560px] rounded-full border" style={{ borderColor: 'rgba(184,212,250,.12)' }} />
-    <div className="absolute right-20 top-44 w-[340px] h-[340px] rounded-full border" style={{ borderColor: 'rgba(184,212,250,.16)' }} />
+    <div className="absolute -right-28 top-20 w-140 h-140 rounded-full border" style={{ borderColor: 'rgba(184,212,250,.12)' }} />
+    <div className="absolute right-20 top-44 w-85 h-85 rounded-full border" style={{ borderColor: 'rgba(184,212,250,.16)' }} />
     <div className="absolute right-[18%] top-[35%] w-20 h-20 rounded-full" style={{ backgroundColor: 'rgba(184,212,250,.1)' }} />
     <div className="relative z-10 layout-container min-h-screen flex flex-col">
       <header className="flex items-center justify-between py-6 border-b" style={{ borderColor: 'rgba(255,255,255,.14)' }}><BrandLogo dark /><span className="hidden sm:block text-xs uppercase tracking-[.2em]" style={{ color: 'rgba(255,255,255,.62)', fontFamily: B }}>Your future, made clearer</span></header>
