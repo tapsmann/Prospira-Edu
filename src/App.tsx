@@ -17,6 +17,7 @@ import { MeetOurMentors } from './pages/blog/MeetOurMentors'
 import { PartnershipModel } from './pages/blog/PartnershipModel'
 import { PurposefulEducation } from './pages/blog/PurposefulEducation'
 import { Analytics } from '@vercel/analytics/react'
+import { ProtectedRoute } from './components/common'
 function ScrollToTop() {
   const { pathname } = useLocation()
   useEffect(() => { window.scrollTo(0, 0) }, [pathname])
@@ -36,9 +37,30 @@ function AppLayout() {
           <Route path="/" element={<HomePage />} />
           <Route path="/students" element={<HomePage />} />
           <Route path="/pathways" element={<ServicesPage />} />
-          <Route path="/portal" element={<PortalPage />} />
-          <Route path="/parents" element={<ParentsPage />} />
-          <Route path="/partners" element={<PartnersPage />} />
+          <Route
+            path="/portal"
+            element={
+              <ProtectedRoute>
+                <PortalPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/parents"
+            element={
+              <ProtectedRoute>
+                <ParentsPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/partners"
+            element={
+              <ProtectedRoute>
+                <PartnersPage />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/sign-in" element={<SignInPage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
           <Route path="/blog" element={<BlogPage />} />

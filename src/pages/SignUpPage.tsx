@@ -47,7 +47,11 @@ export function SignUpPage() {
     } catch (err: unknown) {
       const code = (err as { code?: string }).code || ''
       console.error('Email sign-up failed:', code, err)
-      setFirebaseError(getAuthErrorMessage(code))
+      if (code === 'auth/firebase-app-check-token-is-invalid' || code === 'auth/invalid-app-credential') {
+        setFirebaseError('Security verification required. Please try signing up with Google, or contact support if the issue persists.')
+      } else {
+        setFirebaseError(getAuthErrorMessage(code))
+      }
     } finally {
       setSubmitting(false)
     }
