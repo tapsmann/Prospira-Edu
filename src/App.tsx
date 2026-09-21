@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
-import { Analytics } from '@vercel/analytics/react'
 import { B, C } from './constants/theme'
 import { Navbar, Footer, FloatingChat } from './components/layout'
 import { HomePage, ServicesPage, PortalPage, ParentsPage, PartnersPage, BlogPage, SignUpPage, SignInPage } from './pages'
@@ -17,7 +16,7 @@ import { WhatWeExistToChange } from './pages/blog/WhatWeExistToChange'
 import { MeetOurMentors } from './pages/blog/MeetOurMentors'
 import { PartnershipModel } from './pages/blog/PartnershipModel'
 import { PurposefulEducation } from './pages/blog/PurposefulEducation'
-
+import { Analytics } from "@vercel/analytics/next"
 function ScrollToTop() {
   const { pathname } = useLocation()
   useEffect(() => { window.scrollTo(0, 0) }, [pathname])
@@ -68,7 +67,6 @@ export default function App() {
     <BrowserRouter>
       <AuthProvider>
         <AppLayout />
-        <Analytics />
       </AuthProvider>
     </BrowserRouter>
   )
