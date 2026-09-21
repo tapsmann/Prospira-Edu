@@ -1,0 +1,229 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://static.figma.com/font/Poppins-Bold_6') format('woff2');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('https://static.figma.com/font/Poppins-SemiBold_6') format('woff2');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('https://static.figma.com/font/Poppins-Medium_6') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://static.figma.com/font/Inter_1') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('https://static.figma.com/font/Inter_1') format('woff2');
+}
+
+@theme {
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #F7F9FC;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ============================================
+   UNIVERSAL PAGE MARGINS & PADDING
+   ============================================ */
+.page-wrapper {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.page-container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Responsive padding for page containers */
+@media (min-width: 640px) {
+  .page-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .page-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .page-container {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+/* Section spacing */
+.section-spacing {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .section-spacing {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-spacing {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+/* Full width sections with proper margins */
+.section-full {
+  width: 100%;
+}
+
+.section-full .page-container {
+  max-width: 1440px;
+}
+
+/* Hero section - full width no max-width restriction */
+.hero-full {
+  width: 100%;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #071A38;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #214E88;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0D2A55;
+}
+
+body {
+  scrollbar-width: thin;
+  scrollbar-color: #214E88 #071A38;
+}
+
+/* The single source of truth for all page gutters.  It avoids utility-class
+   compilation differences and keeps the two sides perfectly balanced. */
+.content-container,
+.layout-container {
+  width: 100%;
+  max-width: 1600px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 4.5rem);
+}
+
+/* The split homepage hero does not use PageContainer, so it receives the
+   same visible left/right breathing room explicitly. */
+.hero-copy {
+  padding-left: clamp(1.5rem, 5vw, 6rem);
+  padding-right: clamp(1.5rem, 4vw, 4.5rem);
+}
+
+/* Keep labels, headings, and action text inside their cards at every width. */
+.content-container *,
+.layout-container *,
+.hero-copy * {
+  min-width: 0;
+}
+
+button,
+a,
+h1, h2, h3, h4,
+p,
+span {
+  overflow-wrap: anywhere;
+}
+
+button,
+a {
+  white-space: normal;
+}
+
+@media (min-width: 1600px) {
+  .content-container,
+  .layout-container { padding-inline: 5.5rem; }
+}
+
+/* Shared page rhythm: all content pages use the same vertical pacing. */
+.site-section {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+
+@media (min-width: 768px) {
+  .site-section { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+}
+
+@media (min-width: 1024px) {
+  .site-section { padding-top: 5.5rem; padding-bottom: 5.5rem; }
+}
