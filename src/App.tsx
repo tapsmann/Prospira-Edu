@@ -1,8 +1,8 @@
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import { B, C } from './constants/theme'
 import { Navbar, Footer, FloatingChat } from './components/layout'
-import { HomePage, ServicesPage, PortalPage, ParentsPage, PartnersPage, BlogPage, SignUpPage, SignInPage } from './pages'
+import { HomePage, PortalPage, ParentsPage, PartnersPage, BlogPage, SignUpPage, SignInPage } from './pages'
 import { AuthProvider } from './contexts/AuthContext'
 import { UniversityNotOnlyRoute } from './pages/blog/UniversityNotOnlyRoute'
 import { ChooseCareerPath } from './pages/blog/ChooseCareerPath'
@@ -36,7 +36,7 @@ function AppLayout() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/students" element={<HomePage />} />
-          <Route path="/pathways" element={<ServicesPage />} />
+          <Route path="/pathways" element={<Navigate to="/portal" replace />} />
           <Route
             path="/portal"
             element={

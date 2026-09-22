@@ -40,8 +40,7 @@ export function Footer() {
             <ul className="space-y-2.5">
               {[
                 { text: 'Our Purpose', to: '/' },
-                { text: 'Pathways', to: '/pathways' },
-                { text: 'The Portal', to: '/portal' },
+                { text: 'Study Abroad', to: '/portal' },
                 { text: 'Blog', to: '/blog' },
               ].map((link) => (
                 <li key={link.text}>
