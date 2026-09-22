@@ -28,6 +28,12 @@ export function FinalCTA() {
       <p style={{ marginTop: '16px', color: 'rgba(255,255,255,0.25)', fontSize: '13px', fontFamily: B }}>
         No credit card. No commitment. Just a conversation.
       </p>
+      <p style={{ marginTop: '12px', color: 'rgba(255,255,255,0.55)', fontSize: '14px', fontFamily: B }}>
+        Prefer email?{' '}
+        <a href={`mailto:${CONTACT.gmail}`} className="font-semibold no-underline hover:opacity-80" style={{ color: C.emeraldL }}>
+          {CONTACT.gmail}
+        </a>
+      </p>
     </div>
   )
 }

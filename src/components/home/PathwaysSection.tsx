@@ -19,7 +19,7 @@ export function PathwaysSection() {
           </h2>
         </div>
         <Link
-          to="/pathways"
+          to="/portal"
           className="text-sm font-medium transition-opacity hover:opacity-60 mt-4 sm:mt-0 no-underline"
           style={{ color: C.emerald, fontFamily: B }}
         >
@@ -31,7 +31,7 @@ export function PathwaysSection() {
         {PATHWAYS.map((p, i) => (
           <Link
             key={p.title}
-            to="/pathways"
+            to="/portal"
             onMouseEnter={() => setHovered(i)}
             onMouseLeave={() => setHovered(null)}
             className="rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 block no-underline"

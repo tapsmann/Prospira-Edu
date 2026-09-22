@@ -91,6 +91,11 @@ export function Footer() {
                 {CONTACT.email}
               </li>
               <li className="text-sm" style={{ color: 'rgba(255,255,255,0.42)', fontFamily: B }}>
+                <a href={`mailto:${CONTACT.gmail}`} className="no-underline hover:text-white" style={{ color: 'inherit' }}>
+                  {CONTACT.gmail}
+                </a>
+              </li>
+              <li className="text-sm" style={{ color: 'rgba(255,255,255,0.42)', fontFamily: B }}>
                 {CONTACT.phone}
               </li>
               <li className="text-sm" style={{ color: 'rgba(255,255,255,0.42)', fontFamily: B }}>

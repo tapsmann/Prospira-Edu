@@ -112,6 +112,12 @@ export function PortalPage() {
     window.open(CONTACT.whatsappUrl(message), '_blank')
   }
 
+  const emailAdviser = () => {
+    const subject = 'Help with my study abroad plan'
+    const body = `Hi Prospira-Edu team,\n\nI completed the Study Abroad Planner and would like an adviser's help.\n\nMy selections:\n- Study level: ${answers.level || 'Not specified'}\n- Subject area: ${answers.subject || 'Not specified'}\n- Destination: ${answers.destination || 'Not specified'}\n- Intake: ${answers.intake || 'Not specified'}\n- Funding: ${answers.funding || 'Not specified'}\n- English test: ${answers.english || 'Not specified'}\n- Passport: ${answers.passport || 'Not specified'}\n- Housing preference: ${answers.housing || 'Not specified'}\n\nPlease guide me on the next steps.\n\nThank you.`
+    window.location.href = `mailto:${CONTACT.gmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+  }
+
   const savePlan = () => {
     if (!user) return
     localStorage.setItem(planKey(user.uid), JSON.stringify({ answers, completed }))
@@ -240,7 +246,10 @@ export function PortalPage() {
                   {savedPlan ? 'Plan saved' : 'Save my study plan'}
                 </button>
                 <button className="px-6 py-3 rounded-xl text-white font-semibold text-sm" style={{ backgroundColor: C.blue, fontFamily: H }} onClick={requestPlan}>
-                  Ask an adviser
+                  WhatsApp an adviser
+                </button>
+                <button className="px-6 py-3 rounded-xl text-white font-semibold text-sm" style={{ backgroundColor: C.gold, fontFamily: H }} onClick={emailAdviser}>
+                  Email an adviser
                 </button>
                 <button onClick={restart} className="px-6 py-3 rounded-xl text-sm font-semibold" style={{ border: '1.5px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.75)', fontFamily: H }}>
                   Start again

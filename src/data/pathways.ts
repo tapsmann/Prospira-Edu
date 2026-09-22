@@ -7,7 +7,7 @@ export const PATHWAYS = [
     title: 'Find the right university',
     desc: 'Build a considered shortlist around your course, grades, budget, preferred country, and intended intake.',
     color: C.emerald,
-    img: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=700&h=420&fit=crop&auto=format',
+    img: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=700&h=420&fit=crop&auto=format',
   },
   {
     icon: '',
