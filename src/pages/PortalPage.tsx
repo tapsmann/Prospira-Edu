@@ -159,13 +159,16 @@ export function PortalPage() {
     <div className="w-full">
       <section className="w-full site-section" style={{ backgroundColor: C.navy }}>
         <PageContainer maxWidth="md">
-          <div className="text-center mb-8">
-            <SectionLabel>Study abroad planner</SectionLabel>
-            <h1 style={{ fontFamily: H, fontWeight: 700, fontSize: 'clamp(28px, 5vw, 44px)', color: 'white', marginBottom: '8px' }}>
-              Plan your route to university abroad.
+          <div className="text-center mb-10">
+            <SectionLabel>Study Abroad</SectionLabel>
+            <h1 style={{ fontFamily: H, fontWeight: 700, fontSize: 'clamp(28px, 5vw, 44px)', color: 'white', marginBottom: '16px' }}>
+              Study abroad support
             </h1>
-            <p style={{ fontFamily: B, color: 'rgba(255,255,255,0.62)' }}>
-              Answer a few questions and receive the right application, visa, funding, and accommodation next steps.
+            <p style={{ fontFamily: H, fontWeight: 700, fontSize: 'clamp(20px, 3vw, 28px)', color: C.emeraldL, marginBottom: '16px' }}>
+              From university shortlist to a confident arrival.
+            </p>
+            <p style={{ fontFamily: B, color: 'rgba(255,255,255,0.75)', lineHeight: 1.7, maxWidth: '700px', margin: '0 auto' }}>
+              Prospira-Edu helps students make informed choices about overseas universities, prepare visa applications, and secure accommodation that fits their needs.
             </p>
           </div>
 
