@@ -4,14 +4,7 @@ import { H, B, C } from '@/constants/theme'
 import { BrandLogo } from './BrandLogo'
 import { useAuth } from '@/contexts/AuthContext'
 
-const pathways = [
-  { title: 'Study destinations', items: ['United Kingdom & Ireland', 'Canada & United States', 'Australia & New Zealand', 'Europe & Asia'] },
-  { title: 'University applications', items: ['Course & university matching', 'Application preparation', 'Scholarships & funding', 'English-language tests'] },
-  { title: 'Move with confidence', items: ['Student visa planning', 'Financial evidence', 'Student accommodation', 'Pre-departure support'] },
-]
-
 export function Navbar() {
-  const [open, setOpen] = useState(false)
   const [menu, setMenu] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const { user, loading, signOut } = useAuth()
@@ -23,17 +16,11 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  useEffect(() => { setOpen(false); setMenu(false) }, [location.pathname])
+  useEffect(() => { setMenu(false) }, [location.pathname])
 
   const isActive = (path: string) => location.pathname === path || location.pathname.startsWith(path + '/')
 
-  const closeMenu = () => {
-    setOpen(false)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
   const nav = [
-    { label: 'Study Abroad', to: '/pathways', hasMenu: true },
     { label: 'My Study Plan', to: '/portal' },
     { label: 'For Universities', to: '/partners' },
     { label: 'For Parents', to: '/parents' },
@@ -49,66 +36,24 @@ export function Navbar() {
         boxShadow: scrolled ? '0 8px 30px rgba(4,17,38,0.32)' : 'none',
       }}
     >
-      <div className="layout-container h-[76px] flex items-center justify-between">
+      <div className="layout-container h-19 flex items-center justify-between">
         <Link to="/" aria-label="Go to homepage"><BrandLogo dark compact /></Link>
 
         <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
           {nav.map((item) => (
-            <div
+            <Link
               key={item.label}
-              className="relative"
-              onMouseEnter={() => item.hasMenu && setOpen(true)}
-              onMouseLeave={() => item.hasMenu && setOpen(false)}
+              to={item.to}
+              className="px-3 py-2 text-sm rounded-lg transition-colors inline-block"
+              style={{
+                fontFamily: B,
+                color: isActive(item.to) ? 'white' : 'rgba(255,255,255,0.7)',
+                backgroundColor: isActive(item.to) ? 'rgba(184,212,250,0.13)' : 'transparent',
+                textDecoration: 'none',
+              }}
             >
-              <Link
-                to={item.to}
-                onClick={() => { if (!item.hasMenu) setOpen(false) }}
-                className="px-3 py-2 text-sm rounded-lg transition-colors inline-block"
-                style={{
-                  fontFamily: B,
-                  color: isActive(item.to) ? 'white' : 'rgba(255,255,255,0.7)',
-                  backgroundColor: isActive(item.to) ? 'rgba(184,212,250,0.13)' : 'transparent',
-                  textDecoration: 'none',
-                }}
-              >
-                {item.label}{item.hasMenu && <span className="ml-2 text-[10px]">&#9662;</span>}
-              </Link>
-              {item.hasMenu && open && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-[670px]">
-                  <div
-                    className="rounded-xl overflow-hidden"
-                    style={{ backgroundColor: 'white', border: `1px solid ${C.border}`, boxShadow: '0 24px 60px rgba(4,17,38,0.28)' }}
-                  >
-                    <div className="grid grid-cols-3">
-                      {pathways.map((column, index) => (
-                        <div className="p-5" key={column.title} style={{ borderRight: index < 2 ? `1px solid ${C.border}` : 'none' }}>
-                          <p className="text-xs uppercase tracking-[0.14em] mb-3" style={{ color: C.blue, fontFamily: B }}>{column.title}</p>
-                          {column.items.map((item) => (
-                            <Link
-                              key={item}
-                              to="/pathways"
-                              onClick={closeMenu}
-                              className="block text-left text-sm py-1.5 hover:underline"
-                              style={{ color: C.bodyText, fontFamily: B, textDecoration: 'none' }}
-                            >
-                              {item}
-                            </Link>
-                          ))}
-                        </div>
-                      ))}
-                    </div>
-                    <Link
-                      to="/pathways"
-                      onClick={closeMenu}
-                      className="w-full text-left px-5 py-3 text-sm font-semibold block"
-                      style={{ color: C.navy, borderTop: `1px solid ${C.border}`, fontFamily: B, backgroundColor: C.blueLight, textDecoration: 'none' }}
-                    >
-                      Explore study abroad support <span aria-hidden="true">&#8594;</span>
-                    </Link>
-                  </div>
-                </div>
-              )}
-            </div>
+              {item.label}
+            </Link>
           ))}
         </nav>
 
